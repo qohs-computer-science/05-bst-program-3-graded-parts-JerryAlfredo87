@@ -20,6 +20,11 @@
     newBST.add("y");
     newBST.add("z");
     newBST.add("x");
+    System.out.println("\n In-Order Traversal:");
     newBST.printInOrder();
+    System.out.println("\n Pre-Order Traversal:");
+    newBST.printPreOrder();
+    System.out.println("\n Post-Order Traversal:");
+    newBST.printPostOrder();
    }
  }

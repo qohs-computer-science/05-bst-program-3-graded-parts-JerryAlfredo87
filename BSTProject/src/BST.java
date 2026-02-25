@@ -2,10 +2,10 @@ import java.lang.Comparable;
 
 public class BST implements BSTInterface
 {
-    TreeNode root = null;
+    TreeNode root;
     public BST()
     {
-        root = new TreeNode(null);
+        root = null;
     }
     public void add(Comparable val)
     {
@@ -20,7 +20,7 @@ public class BST implements BSTInterface
     }
     public void addHelper(Comparable val, TreeNode subroot)
     {
-        if(val.compareTo(subroot) <= 0)
+        if(val.compareTo(subroot.getValue()) <= 0)
         {
             if(subroot.getLeft() != null)
             {
