@@ -97,4 +97,66 @@ public class BST implements BSTInterface
             System.out.println(subroot.getValue());
         }
     }
+    public boolean delete(Comparable old)
+    {
+        if(root != null)
+        {
+            if(root.getValue() == old)
+            {
+                if(root.getLeft() != null && root.getRight() != null)
+                {
+                    
+                    return true;
+                }
+                else if(root.getLeft() != null)
+                {
+                    
+                    return true;
+                }
+                else if(root.getRight() != null)
+                {
+
+                    return true;
+                }
+                else
+                {
+                    root.setValue(null);
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private boolean deleteHelper(Comparable old, TreeNode subroot)
+    {
+        if(old.compareTo(subroot.getValue()) == 0)
+        {
+            subroot.setValue()
+        }
+        else if(old.compareTo(subroot.getValue()) < 0)
+        {
+            if(subroot.getLeft() != null)
+            {
+                return deleteHelper(old, subroot.getLeft());
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if(subroot.getRight() != null)
+            {
+                return deleteHelper(old, subroot.getRight());
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
