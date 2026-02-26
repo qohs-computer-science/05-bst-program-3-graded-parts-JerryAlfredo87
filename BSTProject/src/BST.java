@@ -101,27 +101,48 @@ public class BST implements BSTInterface
     {
         if(root != null)
         {
-            if(root.getValue() == old)
+            if(root.getValue().equals(old))
             {
                 if(root.getLeft() != null && root.getRight() != null)
                 {
-                    
+                    TreeNode temp = root.getLeft();
+                    while(temp.getRight() != null)
+                    {
+                        temp = temp.getRight();
+                    }
+                    temp.setRight(root.getRight());
+                    root = root.getLeft();
                     return true;
                 }
                 else if(root.getLeft() != null)
                 {
-                    
+                    root = root.getLeft();
                     return true;
                 }
                 else if(root.getRight() != null)
                 {
-
+                    root = root.getRight();
                     return true;
                 }
                 else
                 {
-                    root.setValue(null);
+                    root = null;
                     return true;
+                }
+            }
+            else
+            {
+                if(root.getLeft() != null)
+                {
+                    return deleteHelper(old, root.getLeft(), root);
+                }
+                else if(root.getRight() != null)
+                {
+                    return deleteHelper(old, root.getRight(), root);
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
@@ -130,33 +151,82 @@ public class BST implements BSTInterface
             return false;
         }
     }
-    private boolean deleteHelper(Comparable old, TreeNode subroot)
+    private boolean deleteHelper(Comparable old, TreeNode subroot, TreeNode root)
     {
-        if(old.compareTo(subroot.getValue()) == 0)
+        if(subroot != null)
         {
-            subroot.setValue()
-        }
-        else if(old.compareTo(subroot.getValue()) < 0)
-        {
-            if(subroot.getLeft() != null)
+            if(subroot.getValue().equals(old))
             {
-                return deleteHelper(old, subroot.getLeft());
+                if(subroot.getLeft() != null && subroot.getRight() != null)
+                {
+                    if(subroot == root.getLeft())
+                    {
+                        root.setLeft(subroot.getLeft());
+                    }
+                    else
+                    {
+                        root.setRight(subroot.getRight());
+                    }
+                    TreeNode temp = subroot.getLeft();
+                    while(temp.getRight() != null)
+                    {
+                        temp = temp.getRight();
+                    }
+                    temp.setRight(subroot.getRight());
+                    subroot = subroot.getLeft();
+                    return true;
+                }
+                else if(subroot.getLeft() != null)
+                {
+                    if(subroot == root.getLeft())
+                    {
+                        root.setLeft(subroot.getLeft());
+                    }
+                    else
+                    {
+                        root.setLeft(subroot.getRight());
+                    }
+                    subroot = subroot.getLeft();
+                    return true;
+                }
+                else if(subroot.getRight() != null)
+                {
+                    if(subroot == root.getLeft())
+                    {
+                        root.setLeft(subroot.getRight());
+                    }
+                    else
+                    {
+                        root.setLeft(subroot.getRight());
+                    }
+                    subroot = subroot.getRight();
+                    return true;
+                }
+                else
+                {
+                    subroot.setValue(null);
+                    return true;
+                }
             }
             else
             {
-                return false;
+                if(subroot.getLeft() != null)
+                {
+                    return deleteHelper(old, subroot.getLeft(), subroot);
+                }
+                else if(subroot.getRight() != null)
+                {
+                    return deleteHelper(old, subroot.getRight(), subroot);
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         else
         {
-            if(subroot.getRight() != null)
-            {
-                return deleteHelper(old, subroot.getRight());
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

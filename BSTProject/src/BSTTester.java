@@ -11,6 +11,7 @@
    public static void main(String[] args)
    {
     BST newBST = new BST();
+    //add
     newBST.add("g");
     newBST.add("r");
     newBST.add("k");
@@ -25,6 +26,20 @@
     System.out.println("\n Pre-Order Traversal:");
     newBST.printPreOrder();
     System.out.println("\n Post-Order Traversal:");
+    newBST.printPostOrder();
+    //delete
+    newBST.delete("g");
+
+
+
+    newBST.delete("k");
+//    newBST.delete("z");
+//    newBST.delete("r");
+    System.out.println("\n In-Order Traversal after deletion:");
+    newBST.printInOrder();
+    System.out.println("\n Pre-Order Traversal after deletion:");
+    newBST.printPreOrder();
+    System.out.println("\n Post-Order Traversal after deletion:");
     newBST.printPostOrder();
    }
  }
