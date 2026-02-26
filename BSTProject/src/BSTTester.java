@@ -29,11 +29,8 @@
     newBST.printPostOrder();
     //delete
     newBST.delete("g");
-
-
-
     newBST.delete("k");
-//    newBST.delete("z");
+    newBST.delete("z");
 //    newBST.delete("r");
     System.out.println("\n In-Order Traversal after deletion:");
     newBST.printInOrder();

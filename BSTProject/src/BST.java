@@ -204,7 +204,7 @@ public class BST implements BSTInterface
                 }
                 else
                 {
-                    subroot.setValue(null);
+                    subroot = null;
                     return true;
                 }
             }
