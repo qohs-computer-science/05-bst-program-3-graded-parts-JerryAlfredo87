@@ -2,11 +2,12 @@ import java.lang.Comparable;
 
 public class BST implements BSTInterface
 {
-    TreeNode root;
+    TreeNode root;//field
     public BST()
     {
         root = null;
-    }
+    }//end constructor
+    //add
     public void add(Comparable val)
     {
         if (root != null)
@@ -17,7 +18,7 @@ public class BST implements BSTInterface
         {
             root = new TreeNode(val);
         }
-    }
+    }//end add
     public void addHelper(Comparable val, TreeNode subroot)
     {
         if(val.compareTo(subroot.getValue()) <= 0)
@@ -42,7 +43,8 @@ public class BST implements BSTInterface
                 subroot.setRight(new TreeNode(val));
             }
         }
-    }
+    }//end add helper
+    //prints
     public void printInOrder()
     {
         if(root != null)
@@ -51,7 +53,7 @@ public class BST implements BSTInterface
             System.out.println(root.getValue());
             printInOrderHelper(root.getRight());
         }
-    }
+    }//end in order
     public void printInOrderHelper(TreeNode subroot)
     {
         if(subroot != null)
@@ -60,7 +62,7 @@ public class BST implements BSTInterface
             System.out.println(subroot.getValue());
             printInOrderHelper(subroot.getRight());
         }
-    }
+    }//end in order helper
     public void printPreOrder()
     {
         if(root != null)
@@ -69,7 +71,7 @@ public class BST implements BSTInterface
             printPreOrderHelper(root.getLeft());
             printPreOrderHelper(root.getRight());
         }
-    }
+    }//end pre order
     public void printPreOrderHelper(TreeNode subroot)
     {
         if(subroot != null)
@@ -78,7 +80,7 @@ public class BST implements BSTInterface
             printPreOrderHelper(subroot.getLeft());
             printPreOrderHelper(subroot.getRight());
         }
-    }
+    }//end pre order helper
     public void printPostOrder()
     {
         if(root != null)
@@ -87,7 +89,7 @@ public class BST implements BSTInterface
             printPostOrderHelper(root.getRight());
             System.out.println(root.getValue());
         }
-    }
+    }//end post order
     public void printPostOrderHelper(TreeNode subroot)
     {
         if(subroot != null)
@@ -96,7 +98,8 @@ public class BST implements BSTInterface
             printPostOrderHelper(subroot.getRight());
             System.out.println(subroot.getValue());
         }
-    }
+    }//end post order helper
+    //delete
     public boolean delete(Comparable old)
     {
         if(root != null)
@@ -132,17 +135,17 @@ public class BST implements BSTInterface
             }
             else
             {
-                if(root.getLeft() != null)
+                if(root.getLeft() == null && root.getRight() == null)
+                {
+                    return false;
+                }
+                else if(old.compareTo(root.getValue()) <= 0)
                 {
                     return deleteHelper(old, root.getLeft(), root);
                 }
-                else if(root.getRight() != null)
-                {
-                    return deleteHelper(old, root.getRight(), root);
-                }
                 else
                 {
-                    return false;
+                    return deleteHelper(old, root.getRight(), root);
                 }
             }
         }
@@ -150,8 +153,8 @@ public class BST implements BSTInterface
         {
             return false;
         }
-    }
-    private boolean deleteHelper(Comparable old, TreeNode subroot, TreeNode root)
+    }//end delete
+    private boolean deleteHelper(Comparable old, TreeNode subroot, TreeNode parent)
     {
         if(subroot != null)
         {
@@ -159,13 +162,13 @@ public class BST implements BSTInterface
             {
                 if(subroot.getLeft() != null && subroot.getRight() != null)
                 {
-                    if(subroot == root.getLeft())
+                    if(subroot == parent.getLeft())
                     {
-                        root.setLeft(subroot.getLeft());
+                        parent.setLeft(subroot.getLeft());
                     }
                     else
                     {
-                        root.setRight(subroot.getRight());
+                        parent.setRight(subroot.getLeft());
                     }
                     TreeNode temp = subroot.getLeft();
                     while(temp.getRight() != null)
@@ -178,49 +181,56 @@ public class BST implements BSTInterface
                 }
                 else if(subroot.getLeft() != null)
                 {
-                    if(subroot == root.getLeft())
+                    if(subroot == parent.getLeft())
                     {
-                        root.setLeft(subroot.getLeft());
+                        parent.setLeft(subroot.getLeft());
                     }
                     else
                     {
-                        root.setLeft(subroot.getRight());
+                        parent.setRight(subroot.getLeft());
                     }
                     subroot = subroot.getLeft();
                     return true;
                 }
                 else if(subroot.getRight() != null)
                 {
-                    if(subroot == root.getLeft())
+                    if(subroot == parent.getLeft())
                     {
-                        root.setLeft(subroot.getRight());
+                        parent.setLeft(subroot.getRight());
                     }
                     else
                     {
-                        root.setLeft(subroot.getRight());
+                        parent.setRight(subroot.getRight());
                     }
                     subroot = subroot.getRight();
                     return true;
                 }
                 else
                 {
-                    subroot = null;
+                    if(subroot == parent.getLeft())
+                    {
+                        parent.setLeft(null);
+                    }
+                    else
+                    {
+                        parent.setRight(null);
+                    }
                     return true;
                 }
             }
             else
             {
-                if(subroot.getLeft() != null)
+                if(subroot.getLeft() == null && subroot.getRight() == null)
+                {
+                    return false;
+                }
+                else if(old.compareTo(subroot.getValue()) <= 0)
                 {
                     return deleteHelper(old, subroot.getLeft(), subroot);
                 }
-                else if(subroot.getRight() != null)
-                {
-                    return deleteHelper(old, subroot.getRight(), subroot);
-                }
                 else
                 {
-                    return false;
+                    return deleteHelper(old, subroot.getRight(), subroot);
                 }
             }
         }
@@ -228,5 +238,5 @@ public class BST implements BSTInterface
         {
             return false;
         }
-    }
-}
+    }//end delete helper
+}//end class

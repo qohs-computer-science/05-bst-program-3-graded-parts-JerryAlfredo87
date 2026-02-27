@@ -31,7 +31,7 @@
     newBST.delete("g");
     newBST.delete("k");
     newBST.delete("z");
-//    newBST.delete("r");
+    newBST.delete("r");
     System.out.println("\n In-Order Traversal after deletion:");
     newBST.printInOrder();
     System.out.println("\n Pre-Order Traversal after deletion:");
