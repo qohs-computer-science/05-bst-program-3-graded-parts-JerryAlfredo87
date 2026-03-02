@@ -320,4 +320,14 @@ public class BST implements BSTInterface
         }
         return false;
     }//end find helper
+    public boolean replace(Comparable old, Comparable toAdd)
+    {
+        if(find(old) == true)
+        {
+            delete(old);
+            add(toAdd);
+            return true;
+        }
+        return false;
+    }//end replace
 }//end class
