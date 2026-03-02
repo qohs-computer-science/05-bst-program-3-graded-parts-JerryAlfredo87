@@ -38,5 +38,15 @@
     newBST.printPreOrder();
     System.out.println("\n Post-Order Traversal after deletion:");
     newBST.printPostOrder();
+    //size
+    System.out.println("\n Size of BST: " + newBST.size());
+    //find
+    System.out.println("\n a is in list: " + newBST.find("a"));
+    System.out.println(" c is in list: " + newBST.find("c"));
+    System.out.println(" g is in list: " + newBST.find("g"));
+    System.out.println(" m is in list: " + newBST.find("m"));
+    System.out.println(" x is in list: " + newBST.find("x"));
+    System.out.println(" y is in list: " + newBST.find("y"));
+    System.out.println(" z is in list: " + newBST.find("z"));
    }
  }

@@ -239,4 +239,85 @@ public class BST implements BSTInterface
             return false;
         }
     }//end delete helper
+    public int size()
+    {
+        int num = 0;
+        if(root != null)
+        {
+            num++;
+            if(root.getLeft() != null)
+            {
+                num = sizeHelper(root.getLeft(), num);
+            }
+            if(root.getRight() != null)
+            {
+                num = sizeHelper(root.getRight(), num);
+            }
+        }
+        return num;
+    }//end size
+    private int sizeHelper(TreeNode subroot, int num)
+    {
+        if(subroot != null)
+        {
+            num++;
+            if(subroot.getLeft() != null)
+            {
+                num = sizeHelper(subroot.getLeft(), num);
+            }
+            if(subroot.getRight() != null)
+            {
+                num = sizeHelper(subroot.getRight(), num);
+            }
+        }
+        return num;
+    }//end size helper
+    public boolean isEmpty()
+    {
+        if(root != null)
+        {
+            return false;
+        }
+        return true;
+    }//end isEmpty
+    public boolean find(Comparable val)
+    {
+        if(root != null)
+        {
+            if(root.getValue().compareTo(val) != 0)
+            {
+                if(root.getValue().compareTo(val) > 0)
+                {
+                    return findHelper(root.getLeft(), val);
+                }
+                if(root.getValue().compareTo(val) < 0)
+                {
+                    return findHelper(root.getRight(), val);
+                }
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }//end find
+    public boolean findHelper(TreeNode subroot, Comparable val)
+    {
+        if(subroot != null)
+        {
+            if(subroot.getValue().compareTo(val) != 0)
+            {
+                if(subroot.getValue().compareTo(val) > 0)
+                {
+                    return findHelper(subroot.getLeft(), val);
+                }
+                if(subroot.getValue().compareTo(val) < 0)
+                {
+                    return findHelper(subroot.getRight(), val);
+                }
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }//end find helper
 }//end class
