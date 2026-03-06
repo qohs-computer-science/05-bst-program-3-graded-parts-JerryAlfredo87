@@ -64,5 +64,49 @@
     newBST.printPreOrder();
     System.out.println("\n Post-Order Traversal after replacement:");
     newBST.printPostOrder();
+    BST myBST = new BST();
+
+    System.out.println("\n\nQuince Orchard Tree");
+    myBST.add("O");
+    myBST.add("R");
+    myBST.add("C");
+    myBST.add("H");
+    myBST.add("A");
+    myBST.add("R");
+    myBST.add("D");
+    myBST.add("Q");
+    myBST.add("U");
+    myBST.add("I");
+    myBST.add("N");
+    myBST.add("C");
+    myBST.add("E");
+    
+    System.out.println("\nIs the tree empty: " + myBST.isEmpty());
+    System.out.println("\nIn-Order Traversal:");
+    myBST.printInOrder();
+    System.out.println("\nPre-Order Traversal:");
+    myBST.printPreOrder();
+    System.out.println("\nPost-Order Traversal:");
+    myBST.printPostOrder();
+    myBST.delete("O");
+    myBST.delete("R");
+    myBST.delete("E");
+    myBST.delete("O");
+    System.out.println("\nIn-Order Traversal after deletion:");
+    myBST.printInOrder();
+    System.out.println("\nPre-Order Traversal after deletion:");
+    myBST.printPreOrder();
+    System.out.println("\nPost-Order Traversal after deletion:");
+    myBST.printPostOrder();
+    System.out.println("\nSize of BST: " + myBST.size());
+    System.out.println("\nC is in list: " + myBST.find("C"));
+    System.out.println("O is in list: " + myBST.find("O"));
+    System.out.println("U is in list: " + myBST.find("U"));
+    System.out.println("G is in list: " + myBST.find("G"));
+    System.out.println("A is in list: " + myBST.find("A"));
+    System.out.println("R is in list: " + myBST.find("R"));
+    System.out.println("S is in list: " + myBST.find("S"));
+    System.out.println("\nReplace Q with C: " + myBST.replace("Q", "C"));
+    System.out.println("Replace Q with C: " + myBST.replace("Q", "C"));
    }
  }

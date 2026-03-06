@@ -328,6 +328,7 @@ public class BST implements BSTInterface
             add(toAdd);
             return true;
         }
+        add(toAdd);
         return false;
     }//end replace
 }//end class
